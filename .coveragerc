@@ -1,0 +1,9 @@
+[run]
+branch = true
+timid = true
+
+[report]
+fail_under = 90
+show_missing = true
+skip_covered = true
+sort = Cover

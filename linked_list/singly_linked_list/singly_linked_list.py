@@ -1,13 +1,16 @@
+import os
 import sys
 from typing import Any
 
-sys.path.append("..")
+base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.append(base_dir)
 
 from node import Node
 
 
 class SinglyLinkedList:
     """单向链表"""
+
     def __init__(self) -> None:
         self._head = None
 
@@ -94,6 +97,3 @@ class SinglyLinkedList:
                 return True
             current = current.next
         return False
-
-
-
