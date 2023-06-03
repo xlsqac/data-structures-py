@@ -1,22 +1,11 @@
-import os
-import sys
-from typing import Any
+from typing import Any, Union
 
-base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-sys.path.append(base_dir)
-
-from node import Node
+from .linked_list import LinkedList
+from .node import Node
 
 
-class SinglyLinkedList:
-    """单向链表"""
-
-    def __init__(self) -> None:
-        self._head = None
-
-    def is_empty(self) -> bool:
-        """判断列表是否为空 O(1)"""
-        return self._head is None
+class SinglyLinkedList(LinkedList):
+    """单向链表 0>1>2>None"""
 
     def length(self) -> int:
         """链表数量 O(n)"""
@@ -40,13 +29,6 @@ class SinglyLinkedList:
             while current.next is not None:
                 current = current.next
             current.next = node
-
-    def travel(self) -> None:
-        """遍历链表 O(n)"""
-        current = self._head
-        while current is not None:
-            print(current.item)
-            current = current.next
 
     def add(self, item: Any) -> None:
         """增加结点到表头 O(1)"""
@@ -97,3 +79,21 @@ class SinglyLinkedList:
                 return True
             current = current.next
         return False
+
+    def _to_list(self, is_print: bool = False) -> list:
+        output = []
+        current = self._head
+        while current is not None:
+            if is_print:
+                print(current.item)
+
+            output.append(current.item)
+            current = current.next
+        return output
+
+    def move_to_head(self, node: Node) -> None:
+        """
+        将指定结点移动到头部
+        :param node: Node type，要移动的结点
+        :return:
+        """

@@ -1,11 +1,11 @@
 import unittest
 
-from .singly_cycle_linked_list import SinglyCycleLinkedList
+from data_structures.linked_list.doubly_linked_list import DoublyLinkedList
 
 
-class TestSinglyCycleLinkedList(unittest.TestCase):
+class TestDoublyLinkedList(unittest.TestCase):
     def setUp(self):
-        self.linked_list = SinglyCycleLinkedList()
+        self.linked_list = DoublyLinkedList()
 
     def test_is_empty(self):
         self.assertTrue(self.linked_list.is_empty())

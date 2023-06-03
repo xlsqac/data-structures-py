@@ -1,19 +1,12 @@
-import os
-import sys
 from typing import Any, Union
 
-base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-sys.path.append(base_dir)
-
-from node import Node
-from singly_linked_list.singly_linked_list import SinglyLinkedList
-
-TRAVEL = "travel"  # 遍历的标志，控制 _travel 函数是否打印 item
+from .node import Node
+from .singly_linked_list import SinglyLinkedList
 
 
 class SinglyCycleLinkedList(SinglyLinkedList):
     """
-    单向循环链表，尾结点指向头结点
+    单向循环链表，尾结点指向头结点 0>1>2>0
     在单向链表的基础上修改 add，append，insert，remove, length 等操作
     """
 
@@ -105,12 +98,12 @@ class SinglyCycleLinkedList(SinglyLinkedList):
                 previous = current
                 current = current.next
 
-    def _travel(self, option: Union[str, None] = None) -> list:
+    def _to_list(self, is_print: bool = False) -> list:
         output = []
         current = self._head
         while True:
             output.append(current.item)
-            if option == TRAVEL:
+            if is_print:
                 print(current.item)
             # 尾结点或只有一个结点
             if current.next == self._head or current.next is None:
@@ -118,11 +111,3 @@ class SinglyCycleLinkedList(SinglyLinkedList):
             else:
                 current = current.next
         return output
-
-    def to_list(self) -> list:
-        """链表转换成列表"""
-        return self._travel()
-
-    def travel(self) -> None:
-        """遍历链表"""
-        self._travel(option=TRAVEL)

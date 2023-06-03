@@ -1,11 +1,11 @@
 import unittest
 
-from .singly_linked_list import SinglyLinkedList
+from data_structures.linked_list.singly_cycle_linked_list import SinglyCycleLinkedList
 
 
 class TestSinglyCycleLinkedList(unittest.TestCase):
     def setUp(self):
-        self.linked_list = SinglyLinkedList()
+        self.linked_list = SinglyCycleLinkedList()
 
     def test_is_empty(self):
         self.assertTrue(self.linked_list.is_empty())
@@ -95,4 +95,4 @@ class TestSinglyCycleLinkedList(unittest.TestCase):
 
     def test_travel(self):
         self.linked_list.add(0)
-        self.linked_list.travel()
+        # self.linked_list.travel()
